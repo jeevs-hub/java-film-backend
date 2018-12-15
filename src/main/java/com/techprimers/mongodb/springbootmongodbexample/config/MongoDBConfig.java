@@ -20,5 +20,4 @@ public class MongoDBConfig {
 //            userRepository.save(new User("Sam", "test@test.co.uk", "newtest"));
 //        };
 //    }
-
 }

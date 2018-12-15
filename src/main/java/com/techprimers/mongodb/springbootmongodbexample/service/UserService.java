@@ -8,14 +8,16 @@ import com.techprimers.model.UserRegisterModel;
 import com.techprimers.mongodb.springbootmongodbexample.document.User;
 
 import java.util.List;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Jeevan
  */
-public interface UserService {
+public interface UserService extends UserDetailsService {
     List<User> listAll();
-    String register(UserRegisterModel user);
+    User register(User user);
+    User login(User user);
 //    User getById();
 //    User update();
 //    void delete(String id);

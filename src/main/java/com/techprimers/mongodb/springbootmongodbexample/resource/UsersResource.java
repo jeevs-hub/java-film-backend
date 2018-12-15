@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,8 +19,8 @@ public class UsersResource {
 
     private UserServiceImpl userService; 
         
-    public UsersResource(UserRepository userRepository) {
-        this.userService = new UserServiceImpl(userRepository);
+    public UsersResource(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+        this.userService = new UserServiceImpl(userRepository, bCryptPasswordEncoder);
     }
 
     @GetMapping("/all")
@@ -29,15 +30,16 @@ public class UsersResource {
     }
     
     @PostMapping("/register")
-    public String register(@RequestBody UserRegisterModel user) {
+    public User register(@RequestBody User user) {
         System.out.println("reaches here " + user.toString());
-        userService.register(user);
-        return "test";
+        return userService.register(user);
+        
     }
-    
-    @PostMapping("/test")
-    public String test(@RequestBody User test) {
-        System.out.println("reaches here " + test);
-        return "test";
+
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        System.out.println("reaches here " + user.toString());
+        return userService.login(user);
     }
 }
+

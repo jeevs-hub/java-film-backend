@@ -15,5 +15,8 @@ public class Constants {
     
     public static final String IS_VALID_PWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$";
     public static final String PASSWORD_EXCEPTION_MESSAGE = "Invalid password. Must contain at least one lower case letter, one capital letter, one number and be six or more digits";
+    
+    public static final String INVALID_USER_LOGIN_MESSAGE = "Invalid email or password";
+    public static final String USER_EXISTS_EXCEPTION_MESSAGE = "The email provided is associated with an account";
 
 }
