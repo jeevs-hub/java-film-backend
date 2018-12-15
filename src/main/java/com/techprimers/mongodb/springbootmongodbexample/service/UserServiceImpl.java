@@ -5,7 +5,9 @@
  */
 package com.techprimers.mongodb.springbootmongodbexample.service;
 
+import com.techprimers.constants.Constants;
 import com.techprimers.exception.InvalidDataInputException;
+import com.techprimers.model.UserRegisterModel;
 import com.techprimers.mongodb.springbootmongodbexample.document.User;
 import com.techprimers.mongodb.springbootmongodbexample.repository.UserRepository;
 import java.util.List;
@@ -26,18 +28,14 @@ public class UserServiceImpl implements UserService {
     
     @Override
     public List<User> listAll() {
-        if(true)
-            throw new InvalidDataInputException("does the error hadnling work?");
-
-        return this.userRepository.findAll();
+        return userRepository.findAll();
     }
     
-    @Override
-    public String register(String user) {
-        if(user.equals("test")) 
-        {
-            throw new InvalidDataInputException("does the error hadnling work?");
-        }
+    public String register(UserRegisterModel user) {
+        System.out.println("the user in the service" + user.toString());
+        if(!user.isValidEmail()) throw new InvalidDataInputException(Constants.EMAIL_EXCEPTION_MESSAGE);
+        if(!user.isValidPassword()) throw new InvalidDataInputException(Constants.PASSWORD_EXCEPTION_MESSAGE);
+        
         return "test";
     }
 }

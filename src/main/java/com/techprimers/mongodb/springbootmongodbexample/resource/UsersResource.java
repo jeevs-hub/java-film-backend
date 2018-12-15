@@ -1,5 +1,6 @@
 package com.techprimers.mongodb.springbootmongodbexample.resource;
 
+import com.techprimers.model.UserRegisterModel;
 import com.techprimers.mongodb.springbootmongodbexample.document.User;
 import com.techprimers.mongodb.springbootmongodbexample.repository.UserRepository;
 import com.techprimers.mongodb.springbootmongodbexample.service.UserServiceImpl;
@@ -28,15 +29,15 @@ public class UsersResource {
     }
     
     @PostMapping("/register")
-    public String test(@RequestBody String user) {
+    public String register(@RequestBody UserRegisterModel user) {
         System.out.println("reaches here " + user.toString());
         userService.register(user);
-        return user;
+        return "test";
     }
     
-    @GetMapping("/test")
-    public String test() {
-        System.out.println("reaches here ");
+    @PostMapping("/test")
+    public String test(@RequestBody User test) {
+        System.out.println("reaches here " + test);
         return "test";
     }
 }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.techprimers.mongodb.springbootmongodbexample.service;
+import com.techprimers.model.UserRegisterModel;
 import com.techprimers.mongodb.springbootmongodbexample.document.User;
 
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface UserService {
     List<User> listAll();
-    String register(String user);
+    String register(UserRegisterModel user);
 //    User getById();
 //    User update();
 //    void delete(String id);

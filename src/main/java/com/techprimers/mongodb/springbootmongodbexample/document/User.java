@@ -1,7 +1,6 @@
 package com.techprimers.mongodb.springbootmongodbexample.document;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,26 +8,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     @Id
-    private Integer id;
+    private ObjectId id;
     private String name;
-    private String teamName;
-    private Long salary;
+    private String email;
+    private String password;
 
     public User() {
     }
 
-    public User(Integer id, String name, String teamName, Long salary) {
-        this.id = id;
+    public User(String name, String email, String password) {
+        this.id = new ObjectId();
         this.name = name;
-        this.teamName = teamName;
-        this.salary = salary;
+        this.email = email;
+        this.password =  password;
     }
-    
-    public Integer getId() {
+
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -41,27 +40,27 @@ public class User {
     }
 
     public String getTeamName() {
-        return teamName;
+        return email;
     }
 
     public void setTeamName(String teamName) {
-        this.teamName = teamName;
+        this.email = teamName;
     }
 
-    public Long getSalary() {
-        return salary;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSalary(Long salary) {
-        this.salary = salary;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
+
     @Override
     public String toString() {
         return String.format("the user id is %s "
                 + "the user name is %s "
                 + "the user password is %s "
                 + "the user email is %s ",
-                this.id, this.name, this.teamName, this.salary);
+                id, name, email, password);
     }
 }
